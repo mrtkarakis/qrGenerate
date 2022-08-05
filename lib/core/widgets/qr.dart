@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_generate/global.dart';
 import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
+import 'package:qr_generate/services/image_services.dart';
 import 'package:qr_generate/styles/color_palatte.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
@@ -40,7 +41,8 @@ class Qr extends StatelessWidget {
                             children: [
                               const Spacer(),
                               qrPanelButton(
-                                icon: const Icon(Icons.edit),
+                                color: ColorPalatte.lightSteelBlue.color(),
+                                icon: Image.asset(AssetsIcons.edit.fullPath()),
                                 onPressed: () {
                                   Navigator.push(
                                       context,
@@ -54,7 +56,8 @@ class Qr extends StatelessWidget {
                                   return qrPanelButton(
                                     color: qrStore.backgroundColor,
                                     key: colorLensKey,
-                                    icon: const Icon(Icons.color_lens),
+                                    icon: Image.asset(
+                                        AssetsIcons.colorPalatte.fullPath()),
                                     onPressed: () {
                                       showDialog(
                                           context: context,
@@ -78,21 +81,26 @@ class Qr extends StatelessWidget {
                         )),
                     const SizedBox(width: 5),
                     Observer(builder: (_) {
-                      return Flexible(
-                        flex: 2,
-                        child: Screenshot(
-                          controller: screenshotController,
-                          child: QrImage(
-                            data: qrStore.data,
-                            version: QrVersions.auto,
-                            size: QrStyle.qrImageSize,
-                            backgroundColor: qrStore.backgroundColor,
-                            dataModuleStyle: qrStore.dataModuleStyle,
-                            eyeStyle: qrStore.eyeStyle,
-                            foregroundColor: qrStore.foregroundColor,
-                            gapless: qrStore.gapless,
-                            padding: qrStore.padding,
-                            key: Key(qrStore.data),
+                      return Center(
+                        child: Flexible(
+                          flex: 2,
+                          child: Screenshot(
+                            controller: screenshotController,
+                            child: QrImage(
+                              data: qrStore.data,
+                              version: QrVersions.auto,
+                              size: QrStyle.qrImageSize,
+                              backgroundColor: qrStore.backgroundColor,
+                              dataModuleStyle: qrStore.dataModuleStyle,
+                              eyeStyle: qrStore.eyeStyle,
+                              foregroundColor: qrStore.foregroundColor,
+                              gapless: qrStore.gapless,
+                              padding: qrStore.padding,
+                              key: Key(qrStore.data),
+                              constrainErrorBounds: false,
+                              embeddedImageEmitsError: false,
+                              errorCorrectionLevel: 1,
+                            ),
                           ),
                         ),
                       );
@@ -107,14 +115,16 @@ class Qr extends StatelessWidget {
                           children: [
                             const Spacer(),
                             qrPanelButton(
-                              icon: const Icon(Icons.ios_share_rounded),
+                              color: ColorPalatte.seaGreen.color(),
+                              icon: Image.asset(AssetsIcons.share.fullPath()),
                               onPressed: () async {
                                 await const Qr().shareQrCode();
                               },
                             ),
                             const Spacer(),
                             qrPanelButton(
-                              icon: const Icon(Icons.copy),
+                              color: ColorPalatte.newYorkPink.color(),
+                              icon: Image.asset(AssetsIcons.copy.fullPath()),
                               onPressed: () {
                                 String data = qrStore.data;
                                 textService.copyText(data);
@@ -133,7 +143,7 @@ class Qr extends StatelessWidget {
   }
 
   ElevatedButton qrPanelButton(
-      {Icon icon = const Icon(Icons.edit),
+      {Widget icon = const Icon(Icons.edit),
       Size size = const Size(50, 50),
       VoidCallback? onPressed,
       Color? color,

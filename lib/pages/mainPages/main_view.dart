@@ -7,7 +7,7 @@ import 'package:qr_generate/global.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
-
+  static const SizedBox paddingWidget = SizedBox(height: 12);
   @override
   Widget build(BuildContext context) {
     deviceStore.setSize(context);
@@ -23,9 +23,13 @@ class MyHomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: const [
+              paddingWidget,
               Qr(),
+              paddingWidget,
               QrFormField(),
+              paddingWidget,
               CopyTextWidget(),
+              paddingWidget,
               QrData(),
             ],
           ),

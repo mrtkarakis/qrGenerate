@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 enum ColorPalatte {
+  white(0XFFFFFFFF),
   yellow(0XFFF7F6CF),
   paleTurquoies(0XFFB6D8F2),
   linen(0XFFF4CFDF),

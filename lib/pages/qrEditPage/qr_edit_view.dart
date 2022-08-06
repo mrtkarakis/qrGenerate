@@ -30,11 +30,9 @@ class QrEditPage extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 children: const [
                   Positioned(
-                      top: 90,
-                      child: QrDesignSwitch(qrDesignType: QrDesignType.eye)),
+                      top: 90, child: QrDesign(qrDesignType: QrDesignType.eye)),
                   Positioned(
-                      top: 0,
-                      child: QrDesignSwitch(qrDesignType: QrDesignType.dots)),
+                      top: 0, child: QrDesign(qrDesignType: QrDesignType.dots)),
                 ],
               ),
             )

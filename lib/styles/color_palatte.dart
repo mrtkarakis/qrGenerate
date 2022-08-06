@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 enum ColorPalatte {
   white(0XFFFFFFFF),
+  black(0XFF000000),
   yellow(0XFFF7F6CF),
   paleTurquoies(0XFFB6D8F2),
   linen(0XFFF4CFDF),
@@ -33,16 +34,15 @@ enum ColorPalatte {
   mediumAquamarine(0XFF76CDCD),
   mediumTurquoise(0XFF2CCED2),
   paleTurquoise(0XFFB8E0F6),
-  // lightBlue(0XFFA4CCE3),
+  lightBlue2(0XFFA4CCE3),
   darkSlateBlue(0XFF37667E),
   lightSteelPink(0XFFDEC4D6),
   lightSlateGrey(0XFF7B92AA),
-
   powderBlue(0XFFDDF2F4),
   lightSteelBlue(0XFF84A6D6),
-  // steelBlue(0XFF4382BB),
+  steelBlue2(0XFF4382BB),
   thistle(0XFFE4CEE0),
-  // rosyBrown(0XFFA15D98),
+  rosyBrown2(0XFFA15D98),
   newYorkPink(0XFFDC828F),
   rajah(0XFFF7CE76),
   dustStorm(0XFFE8D6CF),
@@ -50,10 +50,9 @@ enum ColorPalatte {
   barleyCorn(0XFF9C9359),
   gold(0XFFF4C815),
   antiqueWhite(0XFFF9CAD7),
-  // rosyBrown(0XFFA57283),
-  // lightSteelBlue(0XFFC1D5DE),
-  lightSteelGreen(0XFFDEEDE6),
-  ;
+  rosyBrown3(0XFFA57283),
+  lightSteelBlue2(0XFFC1D5DE),
+  lightSteelGreen(0XFFDEEDE6);
 
   final int colorValue;
   const ColorPalatte(this.colorValue);

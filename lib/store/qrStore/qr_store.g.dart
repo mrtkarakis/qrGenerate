@@ -76,13 +76,13 @@ mixin _$QrStore on _QrStoreBase, Store {
       Atom(name: '_QrStoreBase.foregroundColor', context: context);
 
   @override
-  Color get foregroundColor {
+  Color? get foregroundColor {
     _$foregroundColorAtom.reportRead();
     return super.foregroundColor;
   }
 
   @override
-  set foregroundColor(Color value) {
+  set foregroundColor(Color? value) {
     _$foregroundColorAtom.reportWrite(value, super.foregroundColor, () {
       super.foregroundColor = value;
     });
@@ -129,6 +129,41 @@ mixin _$QrStore on _QrStoreBase, Store {
         name: '_QrStoreBase.setBackgroundColor');
     try {
       return super.setBackgroundColor(color);
+    } finally {
+      _$_QrStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  QrDataModuleStyle setDataModuleStyle(
+      {Color? color, QrDataModuleShape? qrDataModuleShape}) {
+    final _$actionInfo = _$_QrStoreBaseActionController.startAction(
+        name: '_QrStoreBase.setDataModuleStyle');
+    try {
+      return super.setDataModuleStyle(
+          color: color, qrDataModuleShape: qrDataModuleShape);
+    } finally {
+      _$_QrStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  QrEyeStyle setEyeStyle({Color? color, QrEyeShape? eyeShape}) {
+    final _$actionInfo = _$_QrStoreBaseActionController.startAction(
+        name: '_QrStoreBase.setEyeStyle');
+    try {
+      return super.setEyeStyle(color: color, eyeShape: eyeShape);
+    } finally {
+      _$_QrStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  Color setForegroundColor(Color color) {
+    final _$actionInfo = _$_QrStoreBaseActionController.startAction(
+        name: '_QrStoreBase.setForegroundColor');
+    try {
+      return super.setForegroundColor(color);
     } finally {
       _$_QrStoreBaseActionController.endAction(_$actionInfo);
     }

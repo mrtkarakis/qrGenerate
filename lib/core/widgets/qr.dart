@@ -12,6 +12,18 @@ class Qr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
+      // final String data = qrStore.data;
+      // final Object tag = data;
+      // final Key qrKey = Key(data);
+      // final Color backgroundColor = qrStore.backgroundColor;
+      // final QrDataModuleStyle dataModuleStyle = qrStore.dataModuleStyle;
+      // final QrEyeStyle eyeStyle = qrStore.eyeStyle;
+      // final Color foregroundColor = qrStore.foregroundColor;
+      // final bool gapless = qrStore.gapless;
+      // final EdgeInsets padding = qrStore.padding;
+      // const bool constrainErrorBounds = false;
+      // const bool embeddedImageEmitsError = false;
+      // const int errorCorrectionLevel = 1;
       return Hero(
         tag: qrStore.data,
         key: Key(qrStore.data),
@@ -25,7 +37,7 @@ class Qr extends StatelessWidget {
           eyeStyle: qrStore.eyeStyle,
           foregroundColor: qrStore.foregroundColor,
           gapless: qrStore.gapless,
-          padding: qrStore.padding,
+          padding: qrStore.padding, // limit 20
           constrainErrorBounds: false,
           embeddedImageEmitsError: false,
           errorCorrectionLevel: 1,

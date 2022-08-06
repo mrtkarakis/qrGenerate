@@ -19,31 +19,39 @@ abstract class _QrStoreBase with Store {
   }
 
   @observable
-  QrDataModuleStyle dataModuleStyle = const QrDataModuleStyle(
+  QrDataModuleStyle dataModuleStyle = QrDataModuleStyle(
       color: Colors.black, dataModuleShape: QrDataModuleShape.square);
 
   @action
-  void setDataModuleStyle(
+  QrDataModuleStyle setDataModuleStyle(
       {Color? color, QrDataModuleShape? qrDataModuleShape}) {
     color = color ?? dataModuleStyle.color;
     qrDataModuleShape = qrDataModuleShape ?? dataModuleStyle.dataModuleShape;
     dataModuleStyle =
         QrDataModuleStyle(color: color, dataModuleShape: qrDataModuleShape);
+    return dataModuleStyle;
   }
 
   @observable
   QrEyeStyle eyeStyle =
-      const QrEyeStyle(color: Colors.black, eyeShape: QrEyeShape.square);
+      QrEyeStyle(color: Colors.black, eyeShape: QrEyeShape.square);
 
   @action
-  void setEyeStyle({Color? color, QrEyeShape? eyeShape}) {
+  QrEyeStyle setEyeStyle({Color? color, QrEyeShape? eyeShape}) {
     color = color ?? dataModuleStyle.color;
     eyeShape = eyeShape ?? eyeStyle.eyeShape;
     eyeStyle = QrEyeStyle(color: color, eyeShape: eyeShape);
+    return eyeStyle;
   }
 
   @observable
-  Color foregroundColor = Colors.black;
+  Color? foregroundColor;
+
+  @action
+  Color setForegroundColor(Color color) {
+    foregroundColor = color;
+    return color;
+  }
 
   @observable
   bool gapless = true;

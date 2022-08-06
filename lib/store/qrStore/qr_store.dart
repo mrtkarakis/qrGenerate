@@ -22,9 +22,25 @@ abstract class _QrStoreBase with Store {
   QrDataModuleStyle dataModuleStyle = const QrDataModuleStyle(
       color: Colors.black, dataModuleShape: QrDataModuleShape.square);
 
+  @action
+  void setDataModuleStyle(
+      {Color? color, QrDataModuleShape? qrDataModuleShape}) {
+    color = color ?? dataModuleStyle.color;
+    qrDataModuleShape = qrDataModuleShape ?? dataModuleStyle.dataModuleShape;
+    dataModuleStyle =
+        QrDataModuleStyle(color: color, dataModuleShape: qrDataModuleShape);
+  }
+
   @observable
   QrEyeStyle eyeStyle =
       const QrEyeStyle(color: Colors.black, eyeShape: QrEyeShape.square);
+
+  @action
+  void setEyeStyle({Color? color, QrEyeShape? eyeShape}) {
+    color = color ?? dataModuleStyle.color;
+    eyeShape = eyeShape ?? eyeStyle.eyeShape;
+    eyeStyle = QrEyeStyle(color: color, eyeShape: eyeShape);
+  }
 
   @observable
   Color foregroundColor = Colors.black;

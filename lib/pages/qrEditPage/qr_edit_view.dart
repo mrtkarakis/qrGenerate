@@ -23,16 +23,17 @@ class QrEditPage extends StatelessWidget {
           children: [
             const SizedBox(height: 20),
             const Center(child: Qr()),
-            SizedBox(
-              height:
-                  deviceStore.size.height - (deviceStore.size.width / 2) - 126,
-              child: Stack(
-                alignment: Alignment.topCenter,
+            const SizedBox(height: 12),
+            Padding(
+              padding: uiStyle.screenPadding,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: const [
-                  Positioned(
-                      top: 90, child: QrDesign(qrDesignType: QrDesignType.eye)),
-                  Positioned(
-                      top: 0, child: QrDesign(qrDesignType: QrDesignType.dots)),
+                  QrDesign(qrDesignType: QrDesignType.dots),
+                  SizedBox(height: 12),
+                  QrDesign(qrDesignType: QrDesignType.eye),
+                  SizedBox(height: 12),
+                  QrDesign(qrDesignType: QrDesignType.backgroundColor),
                 ],
               ),
             )
@@ -41,4 +42,13 @@ class QrEditPage extends StatelessWidget {
       ),
     );
   }
+}
+
+enum QrDesignType {
+  dots("dots"),
+  eye("eyes"),
+  backgroundColor("background color");
+
+  final String title;
+  const QrDesignType(this.title);
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_generate/global.dart';
+import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
 import 'package:qr_generate/services/image_services.dart';
 import 'package:qr_generate/styles/color_palatte.dart';
 
@@ -17,16 +18,70 @@ class _QrDesignState extends State<QrDesign> {
   static const double switchButtonWidth = 126;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-            width: switchButtonWidth,
-            child: QrDesignSwitch(qrDesignType: widget.qrDesignType)),
-        const SizedBox(width: 20),
-        setColor(),
-      ],
-    );
+    if (widget.qrDesignType == QrDesignType.eye ||
+        widget.qrDesignType == QrDesignType.dots) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+              width: switchButtonWidth,
+              child: QrDesignSwitch(qrDesignType: widget.qrDesignType)),
+          const SizedBox(width: 20),
+          setColor(),
+        ],
+      );
+    } else {
+      return SizedBox(
+        height: 96,
+        width: deviceStore.size.width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _title(widget.qrDesignType),
+            const SizedBox(height: 12),
+            Container(
+              padding: const EdgeInsets.all(8),
+              height: 61,
+              decoration: BoxDecoration(
+                color: Colors.blueGrey.shade300,
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: deviceStore.size.width - 120,
+                    child: ListView.builder(
+                      itemCount: ColorPalatte.values.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            changeColorBox(
+                                qrDesignType: widget.qrDesignType,
+                                index: index),
+                          ],
+                        );
+                      },
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: const CircleBorder(),
+                        fixedSize: (const Size(54.5, 54.5))),
+                    child: Image.asset(
+                      AssetsIcons.rightArrow.fullPath(),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   Column setColor() {
@@ -53,8 +108,14 @@ class _QrDesignState extends State<QrDesign> {
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          changeColorBox(index: index, serie: 0),
-                          changeColorBox(index: index, serie: 1),
+                          changeColorBox(
+                              qrDesignType: widget.qrDesignType,
+                              index: index,
+                              serie: 0),
+                          changeColorBox(
+                              qrDesignType: widget.qrDesignType,
+                              index: index,
+                              serie: 1),
                         ],
                       );
                     }),
@@ -76,8 +137,11 @@ class _QrDesignState extends State<QrDesign> {
     );
   }
 
-  InkWell changeColorBox({required int index, required int serie}) {
-    final int colorIndex = index * 2 + serie;
+  InkWell changeColorBox(
+      {required QrDesignType qrDesignType, required int index, int serie = 0}) {
+    final int colorIndex = qrDesignType == QrDesignType.backgroundColor
+        ? index
+        : index * 2 + serie;
     final Color color = ColorPalatte.values[colorIndex].color();
     return InkWell(
       onTap: () {
@@ -86,6 +150,9 @@ class _QrDesignState extends State<QrDesign> {
         }
         if (widget.qrDesignType == QrDesignType.eye) {
           qrStore.setEyeStyle(color: color);
+        }
+        if (widget.qrDesignType == QrDesignType.backgroundColor) {
+          qrStore.setBackgroundColor(color);
         }
       },
       child: Container(
@@ -97,14 +164,6 @@ class _QrDesignState extends State<QrDesign> {
       ),
     );
   }
-}
-
-enum QrDesignType {
-  dots("dots"),
-  eye("eyes");
-
-  final String title;
-  const QrDesignType(this.title);
 }
 
 class QrDesignSwitch extends StatefulWidget {
@@ -142,7 +201,7 @@ class _QrDesignSwitchState extends State<QrDesignSwitch> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(widget.qrDesignType.title),
+          _title(widget.qrDesignType),
           const SizedBox(height: 8),
           Container(
             decoration: BoxDecoration(
@@ -237,3 +296,5 @@ class _QrDesignSwitchState extends State<QrDesignSwitch> {
     );
   }
 }
+
+Text _title(QrDesignType qrDesignType) => Text(qrDesignType.title);

@@ -8,8 +8,6 @@ enum ColorPalatte {
   linen(0XFFF4CFDF),
   steelBlue(0XFF5784BA),
   skyBlue(0XFF9AC8EB),
-  paleLeaf(0XFFF7F6CF),
-  burlyWood(0XFFF7F6CF),
   zinnwaldite(0XFFEEBAB2),
   ecruWhite(0XFFF5F3E7),
   vanillaIce(0XFFF5E2E4),

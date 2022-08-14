@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_generate/global.dart';
+import 'package:qr_generate/pages/chnageColorPage/change_color_view.dart';
 import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
 import 'package:qr_generate/services/image_services.dart';
 import 'package:qr_generate/styles/color_palatte.dart';
@@ -65,16 +66,7 @@ class _QrDesignState extends State<QrDesign> {
                       },
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        shape: const CircleBorder(),
-                        fixedSize: (const Size(54.5, 54.5))),
-                    child: Image.asset(
-                      AssetsIcons.rightArrow.fullPath(),
-                    ),
-                  )
+                  changeColorPageButton(context)
                 ],
               ),
             ),
@@ -82,6 +74,25 @@ class _QrDesignState extends State<QrDesign> {
         ),
       );
     }
+  }
+
+  ElevatedButton changeColorPageButton(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (_) =>
+                    ChangeColorPage(qrDesignType: widget.qrDesignType)));
+      },
+      style: ElevatedButton.styleFrom(
+          primary: Colors.white,
+          shape: const CircleBorder(),
+          fixedSize: (const Size(54.5, 54.5))),
+      child: Image.asset(
+        AssetsIcons.rightArrow.fullPath(),
+      ),
+    );
   }
 
   Column setColor() {
@@ -120,16 +131,7 @@ class _QrDesignState extends State<QrDesign> {
                       );
                     }),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    shape: const CircleBorder(),
-                    fixedSize: (const Size(54.5, 54.5))),
-                child: Image.asset(
-                  AssetsIcons.rightArrow.fullPath(),
-                ),
-              )
+              changeColorPageButton(context)
             ],
           ),
         ),
@@ -139,21 +141,12 @@ class _QrDesignState extends State<QrDesign> {
 
   InkWell changeColorBox(
       {required QrDesignType qrDesignType, required int index, int serie = 0}) {
-    final int colorIndex = qrDesignType == QrDesignType.backgroundColor
-        ? index
-        : index * 2 + serie;
+    final int colorIndex =
+        qrDesignType == QrDesignType.background ? index : index * 2 + serie;
     final Color color = ColorPalatte.values[colorIndex].color();
     return InkWell(
       onTap: () {
-        if (widget.qrDesignType == QrDesignType.dots) {
-          qrStore.setDataModuleStyle(color: color);
-        }
-        if (widget.qrDesignType == QrDesignType.eye) {
-          qrStore.setEyeStyle(color: color);
-        }
-        if (widget.qrDesignType == QrDesignType.backgroundColor) {
-          qrStore.setBackgroundColor(color);
-        }
+        qrDesignServices.changeColor(qrDesignType, color);
       },
       child: Container(
         width: 54.5,

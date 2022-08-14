@@ -5,7 +5,8 @@ enum AssetsIcons {
   leftArrow("left_arrow.png"),
   rightArrow("right_arrow.png"),
   share("share.png"),
-  footsteps("footsteps.png");
+  footsteps("footsteps.png"),
+  selected("selected.png");
 
   final String name;
   const AssetsIcons(this.name);

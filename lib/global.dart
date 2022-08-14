@@ -1,6 +1,7 @@
 library store.store;
 
 import 'package:qr_generate/core/texts/texts.dart';
+import 'package:qr_generate/services/qr_design_services.dart';
 import 'package:qr_generate/services/textServices/text_service.dart';
 import 'package:qr_generate/services/widget_services.dart';
 import 'package:qr_generate/store/qrStore/qr_store.dart';
@@ -18,6 +19,7 @@ final UiStyle uiStyle = UiStyle();
 //service
 final TextService textService = TextService();
 final WidgetServices widgetServices = WidgetServices();
+final QrDesignServices qrDesignServices = QrDesignServices();
 
 //text
 final MainPageTexts mainPageTexts = MainPageTexts();

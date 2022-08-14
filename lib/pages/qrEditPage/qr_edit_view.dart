@@ -33,7 +33,7 @@ class QrEditPage extends StatelessWidget {
                   SizedBox(height: 12),
                   QrDesign(qrDesignType: QrDesignType.eye),
                   SizedBox(height: 12),
-                  QrDesign(qrDesignType: QrDesignType.backgroundColor),
+                  QrDesign(qrDesignType: QrDesignType.background),
                 ],
               ),
             )
@@ -47,7 +47,7 @@ class QrEditPage extends StatelessWidget {
 enum QrDesignType {
   dots("dots"),
   eye("eyes"),
-  backgroundColor("background color");
+  background("background color");
 
   final String title;
   const QrDesignType(this.title);

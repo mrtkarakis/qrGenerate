@@ -35,7 +35,7 @@ class MainViewQr extends StatelessWidget {
                   children: [
                     Flexible(
                         flex: 1,
-                        child: Container(
+                        child: SizedBox(
                           width: double.infinity,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

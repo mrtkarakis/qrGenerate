@@ -51,7 +51,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
                   ),
                   Expanded(
                     child: GridView.builder(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             top: 8, left: 18, right: 18, bottom: 38),
                         shrinkWrap: true,
                         itemCount: ColorPalatte.values.length,

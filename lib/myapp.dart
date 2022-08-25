@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'pages/mainPages/main_view.dart';
+import 'router/app_router.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
+
+  static final appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: MaterialApp(
+      child: MaterialApp.router(
+        routerDelegate: appRouter.delegate(),
+        routeInformationParser: appRouter.defaultRouteParser(),
         debugShowCheckedModeBanner: false,
         title: 'Qr Generate',
         theme: ThemeData.dark().copyWith(
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
                 ElevatedButton.styleFrom(primary: Colors.white.withOpacity(.9)),
           ),
         ),
-        home: const MyHomePage(),
+        // home: const HomePage(),
       ),
     );
   }

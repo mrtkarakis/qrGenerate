@@ -5,8 +5,8 @@ import 'package:qr_generate/core/widgets/main_view_qr.dart';
 import 'package:qr_generate/core/widgets/qr_form_widget.dart';
 import 'package:qr_generate/global.dart';
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
   static const SizedBox paddingWidget = SizedBox(height: 12);
   @override
   Widget build(BuildContext context) {

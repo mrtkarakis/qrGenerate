@@ -2,13 +2,14 @@ import 'dart:developer';
 import 'dart:io' as io;
 import 'dart:typed_data';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_generate/core/widgets/qr.dart';
 import 'package:qr_generate/global.dart';
-import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
+import 'package:qr_generate/router/app_router.dart';
 import 'package:qr_generate/services/image_services.dart';
 import 'package:qr_generate/styles/color_palatte.dart';
 import 'package:screenshot/screenshot.dart';
@@ -95,10 +96,7 @@ class MainViewQr extends StatelessWidget {
               qrPanelButton(
                 color: ColorPalatte.lightSteelBlue.color(),
                 icon: Image.asset(AssetsIcons.edit.fullPath()),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (_) => const QrEditPage()));
-                },
+                onPressed: () => context.router.push(const QrEditRoute()),
               ),
               const Spacer(),
               Observer(
@@ -215,7 +213,7 @@ class ColorLensWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {
           qrStore.setBackgroundColor(color);
-          Navigator.pop(context);
+          context.router.pop();
         },
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),

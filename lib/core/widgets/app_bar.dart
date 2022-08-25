@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_generate/services/image_services.dart';
 
@@ -12,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       leading: backButton
           ? IconButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.router.pop(),
               splashRadius: 28,
               icon: Image.asset(
                 key: keyAppBar,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qr_generate/global.dart';
 
 import 'pages/mainPages/main_view.dart';
 
@@ -14,17 +13,22 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Qr Generate',
-        theme: ThemeData(scaffoldBackgroundColor: Colors.grey.shade200),
-        // theme: ThemeData.dark().copyWith(
-        //   backgroundColor: Colors.blue.shade900,
-        //   scaffoldBackgroundColor: Colors.blue.shade900,
-        //   textTheme: TextTheme(
-        //       bodyMedium:
-        //           TextStyle(color: Colors.black, fontWeight: FontWeight.w500)),
-        //   elevatedButtonTheme: ElevatedButtonThemeData(
-        //     style: ElevatedButton.styleFrom(primary: Colors.purple.shade400),
-        //   ),
-        // ),
+        theme: ThemeData.dark().copyWith(
+          inputDecorationTheme: const InputDecorationTheme(
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none,
+            enabledBorder: InputBorder.none,
+            errorBorder: InputBorder.none,
+            disabledBorder: InputBorder.none,
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+                primary: Colors.white.withOpacity(.9),
+                textStyle: TextStyle(
+                  color: Colors.red,
+                )),
+          ),
+        ),
         home: const MyHomePage(),
       ),
     );

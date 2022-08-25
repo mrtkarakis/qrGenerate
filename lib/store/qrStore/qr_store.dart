@@ -7,7 +7,7 @@ class QrStore = _QrStoreBase with _$QrStore;
 
 abstract class _QrStoreBase with Store {
   @observable
-  String data = "";
+  String data = "https://github.com/mrtkarakis";
 
   @observable
   Color backgroundColor = Colors.white;
@@ -19,7 +19,7 @@ abstract class _QrStoreBase with Store {
   }
 
   @observable
-  QrDataModuleStyle dataModuleStyle = QrDataModuleStyle(
+  QrDataModuleStyle dataModuleStyle = const QrDataModuleStyle(
       color: Colors.black, dataModuleShape: QrDataModuleShape.square);
 
   @action
@@ -34,11 +34,11 @@ abstract class _QrStoreBase with Store {
 
   @observable
   QrEyeStyle eyeStyle =
-      QrEyeStyle(color: Colors.black, eyeShape: QrEyeShape.square);
+      const QrEyeStyle(color: Colors.black, eyeShape: QrEyeShape.square);
 
   @action
   QrEyeStyle setEyeStyle({Color? color, QrEyeShape? eyeShape}) {
-    color = color ?? dataModuleStyle.color;
+    color = color ?? eyeStyle.color;
     eyeShape = eyeShape ?? eyeStyle.eyeShape;
     eyeStyle = QrEyeStyle(color: color, eyeShape: eyeShape);
     return eyeStyle;
@@ -57,7 +57,7 @@ abstract class _QrStoreBase with Store {
   bool gapless = true;
 
   @observable
-  EdgeInsets padding = EdgeInsets.all(6); // limit
+  EdgeInsets padding = const EdgeInsets.all(6); // limit
 
   TextEditingController qrTextEditingController = TextEditingController();
 }

@@ -59,7 +59,11 @@ class MainViewQr extends StatelessWidget {
                                     key: colorLensKey,
                                     icon: Image.asset(
                                         AssetsIcons.colorPalatte.fullPath()),
-                                    onPressed: () {
+                                    onPressed: () async {
+                                      colorLensPosition = widgetServices
+                                          .getPositions(colorLensKey);
+                                      colorLensSize =
+                                          widgetServices.getSizes(colorLensKey);
                                       showDialog(
                                           context: context,
                                           builder: (_) {
@@ -130,12 +134,6 @@ class MainViewQr extends StatelessWidget {
       VoidCallback? onPressed,
       Color? color,
       GlobalKey? key}) {
-    if (key != null) {
-      colorLensPosition = widgetServices.getPositions(key);
-      print(colorLensPosition);
-      colorLensSize = widgetServices.getSizes(key);
-      print(colorLensSize);
-    }
     return ElevatedButton(
       key: key,
       style: ElevatedButton.styleFrom(

@@ -20,14 +20,19 @@ class QrDesignServices {
   }
 
   Color? typeColor(QrDesignType qrDesignType) {
+    Color? color;
     switch (qrDesignType) {
       case QrDesignType.dots:
-        return qrStore.dataModuleStyle.color;
+        color = qrStore.dataModuleStyle.color;
+        break;
       case QrDesignType.eye:
-        return qrStore.eyeStyle.color;
+        color = qrStore.eyeStyle.color;
+        break;
       case QrDesignType.background:
-        return qrStore.backgroundColor;
+        color = qrStore.backgroundColor;
+        break;
       default:
     }
+    return color;
   }
 }

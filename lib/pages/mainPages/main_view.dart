@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
               paddingWidget,
               CopyTextWidget(),
               paddingWidget,
-              QrData(),
+              // QrData(),
             ],
           ),
         ),

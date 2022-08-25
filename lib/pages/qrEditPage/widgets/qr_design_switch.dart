@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import 'package:qr_generate/extension/string_extension.dart';
 import 'package:qr_generate/global.dart';
 import 'package:qr_generate/pages/chnageColorPage/change_color_view.dart';
 import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
@@ -290,4 +291,4 @@ class _QrDesignSwitchState extends State<QrDesignSwitch> {
   }
 }
 
-Text _title(QrDesignType qrDesignType) => Text(qrDesignType.title);
+Text _title(QrDesignType qrDesignType) => Text(qrDesignType.title.capitalize());

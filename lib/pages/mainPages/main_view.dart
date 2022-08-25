@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_generate/core/widgets/app_bar.dart';
 import 'package:qr_generate/core/widgets/copy_text_widgt.dart';
 import 'package:qr_generate/core/widgets/main_view_qr.dart';
 import 'package:qr_generate/core/widgets/qr_data.dart';
@@ -12,8 +13,9 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     deviceStore.setSize(context);
     return Scaffold(
-      appBar: AppBar(
+      appBar: CustomAppBar(
         title: Text(mainPageTexts.appBarTitle),
+        backButton: false,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -26,9 +28,9 @@ class MyHomePage extends StatelessWidget {
               paddingWidget,
               MainViewQr(),
               paddingWidget,
-              QrFormField(),
-              paddingWidget,
               CopyTextWidget(),
+              paddingWidget,
+              QrFormField(),
               paddingWidget,
               // QrData(),
             ],

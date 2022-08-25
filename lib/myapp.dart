@@ -14,6 +14,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Qr Generate',
         theme: ThemeData.dark().copyWith(
+          appBarTheme: const AppBarTheme(
+            centerTitle: true,
+            elevation: .3,
+          ),
           inputDecorationTheme: const InputDecorationTheme(
             border: InputBorder.none,
             focusedBorder: InputBorder.none,
@@ -22,11 +26,8 @@ class MyApp extends StatelessWidget {
             disabledBorder: InputBorder.none,
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
-            style: ElevatedButton.styleFrom(
-                primary: Colors.white.withOpacity(.9),
-                textStyle: TextStyle(
-                  color: Colors.red,
-                )),
+            style:
+                ElevatedButton.styleFrom(primary: Colors.white.withOpacity(.9)),
           ),
         ),
         home: const MyHomePage(),

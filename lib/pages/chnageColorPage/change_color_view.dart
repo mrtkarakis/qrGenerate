@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qr_generate/core/widgets/app_bar.dart';
 import 'package:qr_generate/core/widgets/qr.dart';
 import 'package:qr_generate/extension/string_extension.dart';
 import 'package:qr_generate/global.dart';
@@ -21,7 +22,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: CustomAppBar(
         title: FittedBox(
             child:
                 Text("Change ${widget.qrDesignType.name.capitalize()} Color")),

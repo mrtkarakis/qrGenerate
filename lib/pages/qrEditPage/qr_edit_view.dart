@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_generate/core/widgets/app_bar.dart';
 import 'package:qr_generate/core/widgets/qr.dart';
 import 'package:qr_generate/global.dart';
@@ -14,8 +11,8 @@ class QrEditPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: const Text("Qr Edit"),
+      appBar: const CustomAppBar(
+        title: Text("Qr Edit"),
       ),
       body: SizedBox(
         width: deviceStore.size.width,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:qr_generate/core/widgets/app_bar.dart';
 import 'package:qr_generate/core/widgets/copy_text_widgt.dart';
 import 'package:qr_generate/core/widgets/main_view_qr.dart';
-import 'package:qr_generate/core/widgets/qr_data.dart';
 import 'package:qr_generate/core/widgets/qr_form_widget.dart';
 import 'package:qr_generate/global.dart';
 

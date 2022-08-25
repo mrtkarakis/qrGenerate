@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:qr_generate/services/image_services.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -8,7 +6,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       : super(key: key);
   final Widget? title;
   final bool backButton;
-
+  static const Key keyAppBar = Key("appBarIcon");
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -17,7 +15,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () => Navigator.pop(context),
               splashRadius: 28,
               icon: Image.asset(
-                key: Key("appBarIcon"),
+                key: keyAppBar,
                 AssetsIcons.leftArrow.fullPath(),
                 scale: .1,
               ),

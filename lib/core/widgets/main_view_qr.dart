@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io' as io;
 import 'dart:typed_data';
 
@@ -33,57 +34,7 @@ class MainViewQr extends StatelessWidget {
                 child: Flex(
                   direction: Axis.horizontal,
                   children: [
-                    Flexible(
-                        flex: 1,
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Spacer(),
-                              qrPanelButton(
-                                color: ColorPalatte.lightSteelBlue.color(),
-                                icon: Image.asset(AssetsIcons.edit.fullPath()),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (_) => const QrEditPage()));
-                                },
-                              ),
-                              const Spacer(),
-                              Observer(
-                                builder: (_) {
-                                  return qrPanelButton(
-                                    color: qrStore.backgroundColor,
-                                    key: colorLensKey,
-                                    icon: Image.asset(
-                                        AssetsIcons.colorPalatte.fullPath()),
-                                    onPressed: () async {
-                                      colorLensPosition = widgetServices
-                                          .getPositions(colorLensKey);
-                                      colorLensSize =
-                                          widgetServices.getSizes(colorLensKey);
-                                      showDialog(
-                                          context: context,
-                                          builder: (_) {
-                                            return colorLensPosition != null
-                                                ? ColorLensWidget(
-                                                    colorLensPosition:
-                                                        colorLensPosition!,
-                                                    colorLensSize:
-                                                        colorLensSize!,
-                                                  )
-                                                : const SizedBox();
-                                          });
-                                    },
-                                  );
-                                },
-                              ),
-                              const Spacer(),
-                            ],
-                          ),
-                        )),
+                    leftPanel(context),
                     const SizedBox(width: 5),
                     Center(
                       child: Screenshot(
@@ -92,40 +43,92 @@ class MainViewQr extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 5),
-                    Flexible(
-                      flex: 1,
-                      child: Container(
-                        width: double.infinity,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            const Spacer(),
-                            qrPanelButton(
-                              color: ColorPalatte.darkSeaGreen.color(),
-                              icon: Image.asset(AssetsIcons.share.fullPath()),
-                              onPressed: () async {
-                                await const MainViewQr().shareQrCode();
-                              },
-                            ),
-                            const Spacer(),
-                            qrPanelButton(
-                              color: ColorPalatte.lightSteelPink.color(),
-                              icon: Image.asset(AssetsIcons.copy.fullPath()),
-                              onPressed: () {
-                                String data = qrStore.data;
-                                textService.copyText(data);
-                              },
-                            ),
-                            const Spacer(),
-                          ],
-                        ),
-                      ),
-                    ),
+                    rightPanel(),
                   ],
                 ),
               );
       },
     );
+  }
+
+  Flexible rightPanel() {
+    return Flexible(
+      flex: 1,
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            const Spacer(),
+            qrPanelButton(
+              color: ColorPalatte.darkSeaGreen.color(),
+              icon: Image.asset(AssetsIcons.share.fullPath()),
+              onPressed: () async {
+                await const MainViewQr().shareQrCode();
+              },
+            ),
+            const Spacer(),
+            qrPanelButton(
+              color: ColorPalatte.lightSteelPink.color(),
+              icon: Image.asset(AssetsIcons.copy.fullPath()),
+              onPressed: () {
+                String data = qrStore.data;
+                textService.copyText(data);
+              },
+            ),
+            const Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Flexible leftPanel(BuildContext context) {
+    return Flexible(
+        flex: 1,
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Spacer(),
+              qrPanelButton(
+                color: ColorPalatte.lightSteelBlue.color(),
+                icon: Image.asset(AssetsIcons.edit.fullPath()),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (_) => const QrEditPage()));
+                },
+              ),
+              const Spacer(),
+              Observer(
+                builder: (_) {
+                  return qrPanelButton(
+                    color: qrStore.backgroundColor,
+                    key: colorLensKey,
+                    icon: Image.asset(AssetsIcons.colorPalatte.fullPath()),
+                    onPressed: () async {
+                      colorLensPosition =
+                          widgetServices.getPositions(colorLensKey);
+                      colorLensSize = widgetServices.getSizes(colorLensKey);
+                      showDialog(
+                          context: context,
+                          builder: (_) {
+                            return colorLensPosition != null
+                                ? ColorLensWidget(
+                                    colorLensPosition: colorLensPosition!,
+                                    colorLensSize: colorLensSize!,
+                                  )
+                                : const SizedBox();
+                          });
+                    },
+                  );
+                },
+              ),
+              const Spacer(),
+            ],
+          ),
+        ));
   }
 
   ElevatedButton qrPanelButton(
@@ -163,7 +166,7 @@ class MainViewQr extends StatelessWidget {
         } catch (error) {}
       }
     }).catchError((onError) {
-      print('Error --->> $onError');
+      log('Error --->> $onError');
     });
   }
 }

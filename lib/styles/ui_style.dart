@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qr_generate/global.dart';
 
 class UiStyle {
   final EdgeInsets screenPadding = const EdgeInsets.symmetric(horizontal: 18);

@@ -16,23 +16,25 @@ class HomePage extends StatelessWidget {
         title: Text(mainPageTexts.appBarTitle),
         backButton: false,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: uiStyle.screenPadding,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              paddingWidget,
-              MainViewQr(),
-              paddingWidget,
-              CopyTextWidget(),
-              paddingWidget,
-              QrFormField(),
-              paddingWidget,
-              // QrData(),
-            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: uiStyle.screenPadding,
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                paddingWidget,
+                MainViewQr(),
+                paddingWidget,
+                CopyTextWidget(),
+                paddingWidget,
+                QrFormField(),
+                paddingWidget,
+                // QrData(),
+              ],
+            ),
           ),
         ),
       ),

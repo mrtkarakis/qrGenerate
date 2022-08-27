@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
                 ElevatedButton.styleFrom(primary: Colors.white.withOpacity(.9)),
           ),
         ),
-        // home: const HomePage(),
       ),
     );
   }

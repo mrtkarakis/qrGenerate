@@ -15,7 +15,7 @@ class QrFormField extends StatelessWidget {
       padding: QrFormFieldStyle.qrFormPadding,
       decoration: BoxDecoration(
         color: QrFormFieldStyle.bgColor,
-        borderRadius: uiStyle.borderRadius12,
+        borderRadius: uiStyle.borderRadius20,
       ),
       child: Row(children: [
         Expanded(

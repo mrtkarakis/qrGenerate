@@ -2,14 +2,14 @@
 
 ## Connect with me
 &nbsp;&nbsp;
-[![website](./readme_image/twitter-light.svg)](https://twitter.com/mrtkarakis#gh-light-mode-only)
-[![website](./readme_image/twitter-dark.svg)](https://twitter.com/mrtkarakis#gh-dark-mode-only)
+[![website](./readme_image/icons/twitter-light.svg)](https://twitter.com/mrtkarakis#gh-light-mode-only)
+[![website](./readme_image/icons/twitter-dark.svg)](https://twitter.com/mrtkarakis#gh-dark-mode-only)
 &nbsp;&nbsp;
-[![website](./readme_image/linkedin-light.svg)](https://www.linkedin.com/in/mert-karakış-60622320a/#gh-light-mode-only)
-[![website](./readme_image/linkedin-dark.svg)](https://www.linkedin.com/in/mert-karakış-60622320a/#gh-dark-mode-only)
+[![website](./readme_image/icons/linkedin-light.svg)](https://www.linkedin.com/in/mert-karakış-60622320a/#gh-light-mode-only)
+[![website](./readme_image/icons/linkedin-dark.svg)](https://www.linkedin.com/in/mert-karakış-60622320a/#gh-dark-mode-only)
 &nbsp;&nbsp;
-[![website](./readme_image/instagram-light.svg)](https://www.instagram.com/mrtkarakis/#gh-light-mode-only)
-[![website](./readme_image/instagram-dark.svg)](https://www.instagram.com/mrtkarakis/#gh-dark-mode-only)
+[![website](./readme_image/icons/instagram-light.svg)](https://www.instagram.com/mrtkarakis/#gh-light-mode-only)
+[![website](./readme_image/icons/instagram-dark.svg)](https://www.instagram.com/mrtkarakis/#gh-dark-mode-only)
 
 
 ## 📕 Latest Blog Posts

@@ -19,16 +19,11 @@
 
 
 ## ScreenShots
-### OnBoarding
-![](readme_image/onBoarding.png)
 ### Main Page
 ![](readme_image/main_page.png)
-### Menu Page
-![](readme_image/menu_page.png)
-### Item Detail Page
-![](readme_image/item_detail_page.png)
-### Buy Now Page
-![](readme_image/buy_now_page.png)
-
-
-
+### Edit Page
+![](readme_image/edit_page.png)
+### Edit Color Page
+![](readme_image/edit_color_page.png)
+### share
+![](readme_image/share.png)

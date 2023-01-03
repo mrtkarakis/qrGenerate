@@ -35,7 +35,7 @@ class QrFormField extends StatelessWidget {
           padding: QrFormFieldStyle.buttonPadding,
           child: GradientElevatedButton(
             onPressed: () =>
-                qrStore.data = qrStore.qrTextEditingController.text,
+                qrStore.setQrData(qrStore.qrTextEditingController.text),
             // style: QrFormFieldStyle.generateButtonStyle,
             child: const FittedBox(
                 child: Text(

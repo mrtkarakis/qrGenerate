@@ -22,8 +22,6 @@ class MainViewQr extends StatelessWidget {
   static final ScreenshotController screenshotController =
       ScreenshotController();
   static final GlobalKey colorLensKey = GlobalKey();
-  // static Size? colorLensSize;
-  // static Offset? colorLensPosition;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -79,7 +77,7 @@ class MainViewQr extends StatelessWidget {
               iconPath: AssetsIcons.copy.fullPath,
               onPressed: () {
                 String data = qrStore.data;
-                textService.copyText(data);
+                clipboardService.copyText(data);
               },
             ),
             const Spacer(),

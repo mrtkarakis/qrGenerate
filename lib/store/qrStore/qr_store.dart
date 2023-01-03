@@ -8,7 +8,11 @@ class QrStore = _QrStoreBase with _$QrStore;
 
 abstract class _QrStoreBase with Store {
   @observable
-  String data = "https://github.com/mrtkarakis";
+  String data = "https://www.mertkarakis.dev/";
+
+  @action
+  String setQrData(String? text) =>
+      data = text != null && text.isNotEmpty ? text : data;
 
   @observable
   Color backgroundColor = Colors.white;

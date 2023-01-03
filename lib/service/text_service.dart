@@ -1,19 +1,27 @@
 import 'package:flutter/services.dart';
 
-class TextService {
+class ClipboardService {
+  Future<bool> hasClipboardData() async {
+    final bool hasCopyText = await Clipboard.hasStrings();
+    return hasCopyText;
+  }
+
   Future<String?> getCopyText() async {
     String? result;
-    bool hasCopyText = await Clipboard.hasStrings();
+    final bool hasCopyText = await hasClipboardData();
+
     if (hasCopyText) {
-      ClipboardData? copyText = await Clipboard.getData('text/plain');
-      result = copyText!.text!.trim();
+      final ClipboardData? copyText = await Clipboard.getData('text/plain');
+      result = copyText?.text?.trim();
     }
     return result;
   }
 
-  void copyText(String data) {
+  String? copyText(String data) {
     if (data.isNotEmpty) {
       Clipboard.setData(ClipboardData(text: data));
+      return data;
     }
+    return null;
   }
 }

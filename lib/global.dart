@@ -16,6 +16,6 @@ final QrStore qrStore = QrStore();
 final UiStyle uiStyle = UiStyle();
 
 //service
-final TextService textService = TextService();
+final ClipboardService clipboardService = ClipboardService();
 final WidgetServices widgetServices = WidgetServices();
 final QrDesignServices qrDesignServices = QrDesignServices();

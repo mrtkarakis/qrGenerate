@@ -4,8 +4,6 @@ import 'package:qr_generate/core/router/app_router.dart';
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
-
   static final appRouter = AppRouter();
   @override
   Widget build(BuildContext context) {

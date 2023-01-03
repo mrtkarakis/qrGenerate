@@ -112,24 +112,25 @@ class _QrDesignState extends State<QrDesign> {
             children: [
               Expanded(
                 child: PageView.builder(
-                    itemCount: ColorPalatte.values.length ~/ 2,
-                    controller: PageController(viewportFraction: 1),
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          changeColorBox(
-                              qrDesignType: widget.qrDesignType,
-                              index: index,
-                              serie: 0),
-                          changeColorBox(
-                              qrDesignType: widget.qrDesignType,
-                              index: index,
-                              serie: 1),
-                        ],
-                      );
-                    }),
+                  itemCount: ColorPalatte.values.length ~/ 2,
+                  controller: PageController(viewportFraction: 1),
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        changeColorBox(
+                            qrDesignType: widget.qrDesignType,
+                            index: index,
+                            serie: 0),
+                        changeColorBox(
+                            qrDesignType: widget.qrDesignType,
+                            index: index,
+                            serie: 1),
+                      ],
+                    );
+                  },
+                ),
               ),
               changeColorPageButton(context)
             ],
@@ -263,6 +264,7 @@ class _QrDesignSwitchState extends State<QrDesignSwitch> {
         (alignmetLeft && index == 0) || (!alignmetLeft && index == 1) ? 1 : .6;
     const double size = 30;
     final double elementPadding = qrStore.gapless ? 0 : 1;
+
     return SizedBox(
       height: size,
       width: size,
@@ -275,14 +277,17 @@ class _QrDesignSwitchState extends State<QrDesignSwitch> {
           itemCount: 9,
           itemBuilder: (BuildContext context, int index) {
             return Observer(builder: (_) {
-              Color color =
-                  (index != 1 && index != 8 && index != 7 && index != 3)
-                      ? widget.qrDesignType == QrDesignType.dots
-                          ? qrStore.dataModuleStyle.color!.withOpacity(opacity)
-                          : qrStore.eyeStyle.color!.withOpacity(opacity)
-                      : Colors.transparent;
+              Color color = widget.qrDesignType == QrDesignType.dots
+                  ? qrStore.dataModuleStyle.color!.withOpacity(opacity)
+                  : qrStore.eyeStyle.color!.withOpacity(opacity);
+
               return Container(
-                decoration: BoxDecoration(color: color, shape: shape),
+                decoration: BoxDecoration(
+                  color: (index == 1 || index == 8 || index == 7 || index == 3)
+                      ? Colors.transparent
+                      : color,
+                  shape: shape,
+                ),
               );
             });
           }),

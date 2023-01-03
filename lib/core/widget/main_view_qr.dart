@@ -196,10 +196,8 @@ class ColorLensWidget extends StatelessWidget {
     return Stack(
       children: [
         Positioned(
-          // top: MediaQuery.of(context).size.height / 4.55,
-          // left: MediaQuery.of(context).size.width / 17,
-          top: colorLensPosition.dy - colorLensSize.height,
-          left: colorLensPosition.dx,
+          top: colorLensPosition.dy - MediaQuery.of(context).viewPadding.top,
+          left: colorLensPosition.dx - 3,
           child: SafeArea(
             child: Column(
               children: [
@@ -235,7 +233,7 @@ class ColorLensWidget extends StatelessWidget {
           shape: const CircleBorder(),
           padding: EdgeInsets.zero,
           foregroundColor: color,
-          // minimumSize: Size(55, 55),
+          fixedSize: Size(size, size),
         ),
         child: Container(
           decoration: BoxDecoration(

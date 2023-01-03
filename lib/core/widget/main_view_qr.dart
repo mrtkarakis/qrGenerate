@@ -148,7 +148,7 @@ class MainViewQr extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             // fixedSize: size,
             shape: const CircleBorder(),
-            primary: color,
+            backgroundColor: color,
           ),
           onPressed: onPressed,
           child: Container(
@@ -234,7 +234,7 @@ class ColorLensWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
           padding: EdgeInsets.zero,
-          primary: color,
+          foregroundColor: color,
           // minimumSize: Size(55, 55),
         ),
         child: Container(

@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
             disabledBorder: InputBorder.none,
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
-            style:
-                ElevatedButton.styleFrom(primary: Colors.white.withOpacity(.9)),
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white.withOpacity(.9)),
           ),
         ),
       ),

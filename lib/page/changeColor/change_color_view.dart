@@ -75,7 +75,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
                                 .changeColor(widget.qrDesignType, color)),
                             style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.zero,
-                                primary: color,
+                                backgroundColor: color,
                                 shape: const CircleBorder()),
                             child: Container(
                               alignment: Alignment.topLeft,
@@ -109,7 +109,8 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
         });
       },
       style: TextButton.styleFrom(
-          primary: color,
+          foregroundColor: color,
+          backgroundColor: color.withOpacity(.6),
           minimumSize: Size(deviceStore.size.width / 3, 55),
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
@@ -121,9 +122,11 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
       child: Text(
         changeQrDesignType.name.capitalize(),
         style: TextStyle(
-            color: changeQrDesignType == widget.qrDesignType
-                ? Colors.black87
-                : Colors.black54),
+          color: changeQrDesignType == widget.qrDesignType
+              ? Colors.black
+              : Colors.black54,
+          fontSize: 15,
+        ),
       ),
     );
   }

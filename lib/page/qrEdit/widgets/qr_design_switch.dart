@@ -86,7 +86,7 @@ class _QrDesignState extends State<QrDesign> {
         );
       },
       style: ElevatedButton.styleFrom(
-          primary: Colors.white,
+          backgroundColor: Colors.white,
           shape: const CircleBorder(),
           fixedSize: (const Size(54.5, 54.5))),
       child: Image.asset(
@@ -207,7 +207,7 @@ class _QrDesignSwitchState extends State<QrDesignSwitch> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(99)),
                   padding: EdgeInsets.zero,
-                  primary: Colors.transparent,
+                  backgroundColor: Colors.transparent,
                   shadowColor: Colors.transparent),
               onPressed: () {
                 setState(() => alignmetLeft = !alignmetLeft);

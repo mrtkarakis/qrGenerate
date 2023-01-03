@@ -10,6 +10,6 @@ enum AssetsIcons {
 
   final String name;
   const AssetsIcons(this.name);
-  String path() => "icons/$name";
-  String fullPath() => "assets/${path()}";
+  String get path => "icons/$name";
+  String get fullPath => "assets/$path";
 }

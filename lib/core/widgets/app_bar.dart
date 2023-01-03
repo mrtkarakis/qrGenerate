@@ -17,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               splashRadius: 28,
               icon: Image.asset(
                 key: keyAppBar,
-                AssetsIcons.leftArrow.fullPath(),
+                AssetsIcons.leftArrow.fullPath,
                 scale: .1,
               ),
             )

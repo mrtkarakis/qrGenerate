@@ -95,7 +95,7 @@ class _QrDesignState extends State<QrDesign> {
           shape: const CircleBorder(),
           fixedSize: (const Size(54.5, 54.5))),
       child: Image.asset(
-        AssetsIcons.rightArrow.fullPath(),
+        AssetsIcons.rightArrow.fullPath,
       ),
     );
   }

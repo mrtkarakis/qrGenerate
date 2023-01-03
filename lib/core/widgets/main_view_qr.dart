@@ -68,7 +68,7 @@ class MainViewQr extends StatelessWidget {
             const Spacer(),
             qrPanelButton(
               color: ColorPalatte.darkSeaGreen.color(),
-              iconPath: AssetsIcons.share.fullPath(),
+              iconPath: AssetsIcons.share.fullPath,
               onPressed: () async {
                 await const MainViewQr().shareQrCode();
               },
@@ -76,7 +76,7 @@ class MainViewQr extends StatelessWidget {
             const Spacer(),
             qrPanelButton(
               color: ColorPalatte.lightSteelPink.color(),
-              iconPath: AssetsIcons.copy.fullPath(),
+              iconPath: AssetsIcons.copy.fullPath,
               onPressed: () {
                 String data = qrStore.data;
                 textService.copyText(data);
@@ -100,7 +100,7 @@ class MainViewQr extends StatelessWidget {
               const Spacer(),
               qrPanelButton(
                 color: ColorPalatte.lightSteelBlue.color(),
-                iconPath: AssetsIcons.edit.fullPath(),
+                iconPath: AssetsIcons.edit.fullPath,
                 onPressed: () => context.router.push(const QrEditRoute()),
               ),
               const Spacer(),
@@ -109,7 +109,7 @@ class MainViewQr extends StatelessWidget {
                   return qrPanelButton(
                     color: qrStore.backgroundColor,
                     globalKey: colorLensKey,
-                    iconPath: AssetsIcons.colorPalatte.fullPath(),
+                    iconPath: AssetsIcons.colorPalatte.fullPath,
                     onPressed: () {
                       final colorLensPosition =
                           widgetServices.getPositions(colorLensKey);

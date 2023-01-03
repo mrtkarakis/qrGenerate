@@ -7,11 +7,12 @@ import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
 import 'package:qr_generate/services/image_services.dart';
 import 'package:qr_generate/styles/color_palatte.dart';
 
+// ignore: must_be_immutable
 class ChangeColorPage extends StatefulWidget {
   ChangeColorPage({
-    Key? key,
+    super.key,
     required this.qrDesignType,
-  }) : super(key: key);
+  });
   QrDesignType qrDesignType;
 
   @override
@@ -80,7 +81,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
                               alignment: Alignment.topLeft,
                               child: isSelectColor
                                   ? Image.asset(
-                                      AssetsIcons.selected.fullPath(),
+                                      AssetsIcons.selected.fullPath,
                                       height: 35,
                                     )
                                   : const SizedBox(),

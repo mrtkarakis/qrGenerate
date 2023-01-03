@@ -81,14 +81,9 @@ class _QrDesignState extends State<QrDesign> {
   ElevatedButton changeColorPageButton(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        context.router
-            .push(ChangeColorRoute(qrDesignType: widget.qrDesignType));
-
-        // Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (_) =>
-        //             ChangeColorPage(qrDesignType: widget.qrDesignType)));
+        context.router.push(
+          ChangeColorRoute(qrDesignType: widget.qrDesignType),
+        );
       },
       style: ElevatedButton.styleFrom(
           primary: Colors.white,

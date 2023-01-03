@@ -70,10 +70,12 @@ class MainViewQr extends StatelessWidget {
               onPressed: () async {
                 await const MainViewQr().shareQrCode();
               },
+              toolTipMessage: "Share",
             ),
             const Spacer(),
             qrPanelButton(
               color: ColorPalatte.lightSteelPink.color,
+              toolTipMessage: "Copy Data",
               iconPath: AssetsIcons.copy.fullPath,
               onPressed: () {
                 String data = qrStore.data;
@@ -98,6 +100,7 @@ class MainViewQr extends StatelessWidget {
               const Spacer(),
               qrPanelButton(
                 color: ColorPalatte.lightSteelBlue.color,
+                toolTipMessage: "Edit",
                 iconPath: AssetsIcons.edit.fullPath,
                 onPressed: () => context.router.push(const QrEditRoute()),
               ),
@@ -106,6 +109,7 @@ class MainViewQr extends StatelessWidget {
                 builder: (_) {
                   return qrPanelButton(
                     color: qrStore.backgroundColor,
+                    toolTipMessage: "Change Background Color",
                     globalKey: colorLensKey,
                     iconPath: AssetsIcons.colorPalatte.fullPath,
                     onPressed: () {
@@ -136,25 +140,41 @@ class MainViewQr extends StatelessWidget {
 
   SafeArea qrPanelButton(
       {required String iconPath,
+      required String toolTipMessage,
       Size size = const Size(55, 55),
       VoidCallback? onPressed,
       Color? color,
       GlobalKey? globalKey}) {
     return SafeArea(
-      child: SizedBox.fromSize(
-        size: size,
+      child: Tooltip(
+        message: toolTipMessage,
+        textAlign: TextAlign.center,
+        verticalOffset: -size.height - 6.5,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: uiStyle.borderRadius12,
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black,
+              blurRadius: 1,
+            ),
+          ],
+        ),
         child: ElevatedButton(
           key: globalKey,
           style: ElevatedButton.styleFrom(
-            // fixedSize: size,
+            fixedSize: size,
             shape: const CircleBorder(),
             backgroundColor: color,
           ),
           onPressed: onPressed,
           child: Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.zero,
             decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(iconPath))),
+              image: DecorationImage(
+                image: AssetImage(iconPath),
+              ),
+            ),
           ),
         ),
       ),
@@ -197,7 +217,7 @@ class ColorLensWidget extends StatelessWidget {
       children: [
         Positioned(
           top: colorLensPosition.dy - MediaQuery.of(context).viewPadding.top,
-          left: colorLensPosition.dx - 3,
+          left: colorLensPosition.dx,
           child: SafeArea(
             child: Column(
               children: [

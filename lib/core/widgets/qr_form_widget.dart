@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_generate/global.dart';
+import 'package:qr_generate/localization/texts.dart';
 import 'package:qr_generate/styles/color_palatte.dart';
 
 import 'gradient_elevated_button.dart';
@@ -36,9 +37,9 @@ class QrFormField extends StatelessWidget {
             onPressed: () =>
                 qrStore.data = qrStore.qrTextEditingController.text,
             // style: QrFormFieldStyle.generateButtonStyle,
-            child: FittedBox(
+            child: const FittedBox(
                 child: Text(
-              mainPageTexts.generateQrButton,
+              AppTexts.generateQrButton,
               textAlign: TextAlign.center,
               maxLines: QrFormFieldStyle.buttonMaxLines,
             )),

@@ -4,6 +4,7 @@ import 'package:qr_generate/core/widgets/copy_text_widgt.dart';
 import 'package:qr_generate/core/widgets/main_view_qr.dart';
 import 'package:qr_generate/core/widgets/qr_form_widget.dart';
 import 'package:qr_generate/global.dart';
+import 'package:qr_generate/localization/texts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,8 +13,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     deviceStore.setSize(context);
     return Scaffold(
-      appBar: CustomAppBar(
-        title: Text(mainPageTexts.appBarTitle),
+      appBar: const CustomAppBar(
+        title: Text(AppTexts.appBarTitle),
         backButton: false,
       ),
       body: SafeArea(

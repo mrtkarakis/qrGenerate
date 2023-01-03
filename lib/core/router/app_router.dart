@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart' hide Router;
-import 'package:qr_generate/pages/chnageColorPage/change_color_view.dart';
-import 'package:qr_generate/pages/mainPages/main_view.dart';
-import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
+import 'package:qr_generate/page/changeColor/change_color_view.dart';
+import 'package:qr_generate/page/main/main_view.dart';
+import 'package:qr_generate/page/qrEdit/qr_edit_view.dart';
 
 part 'app_router.gr.dart';
 

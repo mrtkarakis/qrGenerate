@@ -54,5 +54,5 @@ enum ColorPalatte {
 
   final int colorValue;
   const ColorPalatte(this.colorValue);
-  Color color() => Color(colorValue);
+  Color get color => Color(colorValue);
 }

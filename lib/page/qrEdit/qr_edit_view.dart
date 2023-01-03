@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qr_generate/core/widgets/app_bar.dart';
-import 'package:qr_generate/core/widgets/qr.dart';
+import 'package:qr_generate/core/widget/app_bar.dart';
+import 'package:qr_generate/core/widget/qr.dart';
 import 'package:qr_generate/global.dart';
 
 import 'widgets/qr_design_switch.dart';

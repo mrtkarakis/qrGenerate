@@ -1,17 +1,17 @@
-import 'dart:developer';
+import 'dart:developer' as developer;
 import 'dart:io' as io;
-import 'dart:typed_data';
+import 'dart:typed_data' as typeddata;
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:qr_generate/core/widgets/qr.dart';
+import 'package:qr_generate/core/router/app_router.dart';
+import 'package:qr_generate/core/widget/qr.dart';
 import 'package:qr_generate/global.dart';
-import 'package:qr_generate/router/app_router.dart';
-import 'package:qr_generate/services/image_services.dart';
-import 'package:qr_generate/styles/color_palatte.dart';
+import 'package:qr_generate/service/image_services.dart';
+import 'package:qr_generate/core/theme/color_palatte.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -67,7 +67,7 @@ class MainViewQr extends StatelessWidget {
           children: [
             const Spacer(),
             qrPanelButton(
-              color: ColorPalatte.darkSeaGreen.color(),
+              color: ColorPalatte.darkSeaGreen.color,
               iconPath: AssetsIcons.share.fullPath,
               onPressed: () async {
                 await const MainViewQr().shareQrCode();
@@ -75,7 +75,7 @@ class MainViewQr extends StatelessWidget {
             ),
             const Spacer(),
             qrPanelButton(
-              color: ColorPalatte.lightSteelPink.color(),
+              color: ColorPalatte.lightSteelPink.color,
               iconPath: AssetsIcons.copy.fullPath,
               onPressed: () {
                 String data = qrStore.data;
@@ -99,7 +99,7 @@ class MainViewQr extends StatelessWidget {
             children: [
               const Spacer(),
               qrPanelButton(
-                color: ColorPalatte.lightSteelBlue.color(),
+                color: ColorPalatte.lightSteelBlue.color,
                 iconPath: AssetsIcons.edit.fullPath,
                 onPressed: () => context.router.push(const QrEditRoute()),
               ),
@@ -165,7 +165,7 @@ class MainViewQr extends StatelessWidget {
 
   shareQrCode() async {
     final directory = (await getApplicationDocumentsDirectory()).path;
-    screenshotController.capture().then((Uint8List? image) async {
+    screenshotController.capture().then((typeddata.Uint8List? image) async {
       if (image != null) {
         try {
           String fileName = DateTime.now().microsecondsSinceEpoch.toString();
@@ -174,11 +174,11 @@ class MainViewQr extends StatelessWidget {
           await imagePath.writeAsBytes(image);
           Share.shareFiles([imagePath.path]);
         } catch (error) {
-          log('Error --->> $error');
+          developer.log('Error --->> $error');
         }
       }
     }).catchError((onError) {
-      log('Error --->> $onError');
+      developer.log('Error --->> $onError');
     });
   }
 }
@@ -206,12 +206,12 @@ class ColorLensWidget extends StatelessWidget {
             child: Column(
               children: [
                 colorButton(context, color: qrStore.backgroundColor),
-                colorButton(context, color: ColorPalatte.values[40].color()),
-                colorButton(context, color: ColorPalatte.values[9].color()),
-                colorButton(context, color: ColorPalatte.values[12].color()),
-                colorButton(context, color: ColorPalatte.values[32].color()),
-                colorButton(context, color: ColorPalatte.values[23].color()),
-                colorButton(context, color: ColorPalatte.values[44].color()),
+                colorButton(context, color: ColorPalatte.values[40].color),
+                colorButton(context, color: ColorPalatte.values[9].color),
+                colorButton(context, color: ColorPalatte.values[12].color),
+                colorButton(context, color: ColorPalatte.values[32].color),
+                colorButton(context, color: ColorPalatte.values[23].color),
+                colorButton(context, color: ColorPalatte.values[44].color),
               ],
             ),
           ),

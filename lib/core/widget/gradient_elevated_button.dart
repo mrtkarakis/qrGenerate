@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_generate/styles/color_palatte.dart';
+import 'package:qr_generate/core/theme/color_palatte.dart';
 
 class GradientElevatedButton extends StatelessWidget {
   const GradientElevatedButton({
@@ -19,8 +19,8 @@ class GradientElevatedButton extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(radius),
           gradient: LinearGradient(colors: [
-            ColorPalatte.darkSlateGrey.color(),
-            ColorPalatte.seaGreen.color(),
+            ColorPalatte.darkSlateGrey.color,
+            ColorPalatte.seaGreen.color,
           ])),
       child: ElevatedButton(
         onPressed: onPressed,

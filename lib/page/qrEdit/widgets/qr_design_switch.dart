@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:qr_generate/extension/string_extension.dart';
+import 'package:qr_generate/core/extension/string_extension.dart';
+import 'package:qr_generate/core/router/app_router.dart';
 import 'package:qr_generate/global.dart';
-import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
-import 'package:qr_generate/router/app_router.dart';
-import 'package:qr_generate/services/image_services.dart';
-import 'package:qr_generate/styles/color_palatte.dart';
+import 'package:qr_generate/page/qrEdit/qr_edit_view.dart';
+import 'package:qr_generate/service/image_services.dart';
+import 'package:qr_generate/core/theme/color_palatte.dart';
 
 class QrDesign extends StatefulWidget {
   const QrDesign({Key? key, required this.qrDesignType}) : super(key: key);
@@ -143,7 +143,7 @@ class _QrDesignState extends State<QrDesign> {
       {required QrDesignType qrDesignType, required int index, int serie = 0}) {
     final int colorIndex =
         qrDesignType == QrDesignType.background ? index : index * 2 + serie;
-    final Color color = ColorPalatte.values[colorIndex].color();
+    final Color color = ColorPalatte.values[colorIndex].color;
     return InkWell(
       onTap: () {
         qrDesignServices.changeColor(qrDesignType, color);

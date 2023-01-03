@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_generate/global.dart';
-import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
+import 'package:qr_generate/page/qrEdit/qr_edit_view.dart';
 
 class QrDesignServices {
   Color changeColor(QrDesignType qrDesignType, Color color) {

@@ -3,6 +3,7 @@ import 'package:mobx/mobx.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 part 'qr_store.g.dart';
 
+// ignore: library_private_types_in_public_api
 class QrStore = _QrStoreBase with _$QrStore;
 
 abstract class _QrStoreBase with Store {

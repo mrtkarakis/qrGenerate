@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:qr_generate/core/widgets/app_bar.dart';
-import 'package:qr_generate/core/widgets/qr.dart';
-import 'package:qr_generate/extension/string_extension.dart';
+import 'package:qr_generate/core/widget/app_bar.dart';
+import 'package:qr_generate/core/widget/qr.dart';
+import 'package:qr_generate/core/extension/string_extension.dart';
 import 'package:qr_generate/global.dart';
-import 'package:qr_generate/pages/qrEditPage/qr_edit_view.dart';
-import 'package:qr_generate/services/image_services.dart';
-import 'package:qr_generate/styles/color_palatte.dart';
+import 'package:qr_generate/page/qrEdit/qr_edit_view.dart';
+import 'package:qr_generate/service/image_services.dart';
+import 'package:qr_generate/core/theme/color_palatte.dart';
 
 // ignore: must_be_immutable
 class ChangeColorPage extends StatefulWidget {
@@ -63,7 +63,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
                           crossAxisSpacing: 20,
                         ),
                         itemBuilder: (BuildContext context, int index) {
-                          Color color = ColorPalatte.values[index].color();
+                          Color color = ColorPalatte.values[index].color;
                           Color? selectedColor;
 
                           selectedColor =

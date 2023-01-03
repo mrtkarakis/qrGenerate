@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_generate/global.dart';
-import 'package:qr_generate/localization/texts.dart';
-import 'package:qr_generate/styles/color_palatte.dart';
+import 'package:qr_generate/core/localization/texts.dart';
+import 'package:qr_generate/core/theme/color_palatte.dart';
 
 import 'gradient_elevated_button.dart';
 
@@ -60,8 +60,8 @@ class QrFormFieldStyle {
   static const Radius cursorRadius = Radius.circular(20);
   static const double cursorWidth = 2;
   static final TextStyle style =
-      TextStyle(color: ColorPalatte.darkSlateBlue.color());
-  static final Color cursorColor = ColorPalatte.seaGreen.color();
+      TextStyle(color: ColorPalatte.darkSlateBlue.color);
+  static final Color cursorColor = ColorPalatte.seaGreen.color;
   static final ButtonStyle generateButtonStyle = ElevatedButton.styleFrom(
     padding: const EdgeInsets.all(0),
     fixedSize: const Size(70, 55),

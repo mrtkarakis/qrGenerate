@@ -25,8 +25,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
     return Scaffold(
       appBar: CustomAppBar(
         title: FittedBox(
-            child:
-                Text("Change ${widget.qrDesignType.name.capitalize()} Color")),
+            child: Text("Change ${widget.qrDesignType.name.capitalize} Color")),
       ),
       body: Column(
         children: [
@@ -126,7 +125,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
         ),
       ),
       child: Text(
-        changeQrDesignType.name.capitalize(),
+        changeQrDesignType.name.capitalize,
         style: const TextStyle(color: Colors.black, fontSize: 15),
       ),
     );

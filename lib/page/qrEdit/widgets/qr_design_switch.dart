@@ -295,4 +295,4 @@ class _QrDesignSwitchState extends State<QrDesignSwitch> {
   }
 }
 
-Text _title(QrDesignType qrDesignType) => Text(qrDesignType.title.capitalize());
+Text _title(QrDesignType qrDesignType) => Text(qrDesignType.title.capitalize);

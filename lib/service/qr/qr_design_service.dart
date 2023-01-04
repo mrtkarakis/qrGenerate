@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:qr_generate/global.dart';
 import 'package:qr_generate/page/qrEdit/qr_edit_view.dart';
 
-class QrDesignServices {
+class QrDesignService {
+  static QrDesignService? _instance;
+  static QrDesignService get instance {
+    if (_instance != null) return _instance!;
+    _instance = QrDesignService._init();
+    return _instance!;
+  }
+
+  QrDesignService._init();
+
   Color changeColor(QrDesignType qrDesignType, Color color) {
     switch (qrDesignType) {
       case QrDesignType.dots:

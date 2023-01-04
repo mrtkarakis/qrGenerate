@@ -3,13 +3,24 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:qr_generate/global.dart';
 
-class WidgetServices {
+class WidgetService {
+  static WidgetService? _instance;
+  static WidgetService get instance {
+    if (_instance != null) return _instance!;
+    _instance = WidgetService._init();
+    return _instance!;
+  }
+
+  WidgetService._init();
+
   Size? getSizes(GlobalKey key) {
     final RenderBox? renderBox =
         key.currentContext?.findRenderObject() as RenderBox?;
     final Size? size = renderBox?.size;
-    log("DeviceSize: ${deviceStore.size}, Size: $size ",
-        name: "WidgetServices.getPositions");
+
+    developerService.developerLog(
+        "DeviceSize: ${deviceStore.size}, Size: $size ",
+        name: "WidgetService.getPositions");
     return size;
   }
 
@@ -17,8 +28,9 @@ class WidgetServices {
     final RenderBox? renderBoxRed =
         key.currentContext?.findRenderObject() as RenderBox?;
     final Offset? position = renderBoxRed?.localToGlobal(Offset.zero);
-    log("DeviceSize: ${deviceStore.size}, Position: $position",
-        name: "WidgetServices.getPositions");
+    developerService.developerLog(
+        "DeviceSize: ${deviceStore.size}, Position: $position",
+        name: "WidgetService.getPositions");
     return position;
   }
 }

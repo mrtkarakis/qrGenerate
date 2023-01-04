@@ -6,7 +6,7 @@ import 'package:qr_generate/core/extension/string_extension.dart';
 import 'package:qr_generate/core/router/app_router.dart';
 import 'package:qr_generate/global.dart';
 import 'package:qr_generate/page/qrEdit/qr_edit_view.dart';
-import 'package:qr_generate/service/image_services.dart';
+import 'package:qr_generate/service/image/image_service.dart';
 import 'package:qr_generate/core/theme/color_palatte.dart';
 
 class QrDesign extends StatefulWidget {
@@ -147,7 +147,7 @@ class _QrDesignState extends State<QrDesign> {
     final Color color = ColorPalatte.values[colorIndex].color;
     return InkWell(
       onTap: () {
-        qrDesignServices.changeColor(qrDesignType, color);
+        qrDesignService.changeColor(qrDesignType, color);
       },
       child: Container(
         width: 54.5,

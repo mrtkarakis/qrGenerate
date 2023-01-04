@@ -1,6 +1,15 @@
 import 'package:flutter/services.dart';
 
 class ClipboardService {
+  static ClipboardService? _instance;
+  static ClipboardService get instance {
+    if (_instance != null) return _instance!;
+    _instance = ClipboardService._init();
+    return _instance!;
+  }
+
+  ClipboardService._init();
+
   Future<bool> hasClipboardData() async {
     final bool hasCopyText = await Clipboard.hasStrings();
     return hasCopyText;

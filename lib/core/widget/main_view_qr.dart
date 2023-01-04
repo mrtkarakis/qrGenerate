@@ -5,12 +5,13 @@ import 'dart:typed_data' as typeddata;
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:qr_generate/core/router/app_router.dart';
 import 'package:qr_generate/core/widget/qr.dart';
 import 'package:qr_generate/global.dart';
-import 'package:qr_generate/service/image_services.dart';
+import 'package:qr_generate/service/image/image_service.dart';
 import 'package:qr_generate/core/theme/color_palatte.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
@@ -80,6 +81,7 @@ class MainViewQr extends StatelessWidget {
               onPressed: () {
                 String data = qrStore.data;
                 clipboardService.copyText(data);
+                toastMessageService.toastMessage("Copy Data");
               },
             ),
             const Spacer(),
@@ -114,9 +116,9 @@ class MainViewQr extends StatelessWidget {
                     iconPath: AssetsIcons.colorPalatte.fullPath,
                     onPressed: () {
                       final colorLensPosition =
-                          widgetServices.getPositions(colorLensKey);
+                          widgetService.getPositions(colorLensKey);
                       final colorLensSize =
-                          widgetServices.getSizes(colorLensKey);
+                          widgetService.getSizes(colorLensKey);
                       showDialog(
                           context: context,
                           useSafeArea: false,

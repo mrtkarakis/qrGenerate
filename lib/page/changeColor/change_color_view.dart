@@ -4,7 +4,7 @@ import 'package:qr_generate/core/widget/qr.dart';
 import 'package:qr_generate/core/extension/string_extension.dart';
 import 'package:qr_generate/global.dart';
 import 'package:qr_generate/page/qrEdit/qr_edit_view.dart';
-import 'package:qr_generate/service/image_services.dart';
+import 'package:qr_generate/service/image/image_service.dart';
 import 'package:qr_generate/core/theme/color_palatte.dart';
 
 // ignore: must_be_immutable
@@ -67,11 +67,11 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
                           Color? selectedColor;
 
                           selectedColor =
-                              qrDesignServices.typeColor(widget.qrDesignType);
+                              qrDesignService.typeColor(widget.qrDesignType);
                           bool isSelectColor = (color == selectedColor);
 
                           return ElevatedButton(
-                            onPressed: () => setState(() => qrDesignServices
+                            onPressed: () => setState(() => qrDesignService
                                 .changeColor(widget.qrDesignType, color)),
                             style: ElevatedButton.styleFrom(
                                 padding: EdgeInsets.zero,
@@ -99,8 +99,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
   }
 
   TextButton switchTypeButton(QrDesignType changeQrDesignType) {
-    Color color =
-        qrDesignServices.typeColor(changeQrDesignType) ?? Colors.black;
+    Color color = qrDesignService.typeColor(changeQrDesignType) ?? Colors.black;
     color = color == Colors.white ? Colors.grey.shade300 : color;
     return TextButton(
       onPressed: () {

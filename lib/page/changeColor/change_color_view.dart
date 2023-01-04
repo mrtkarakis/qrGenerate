@@ -41,8 +41,10 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
                 ),
               ),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       switchTypeButton(QrDesignType.dots),
@@ -99,12 +101,16 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
   }
 
   TextButton switchTypeButton(QrDesignType changeQrDesignType) {
+    const TextStyle textStyle = TextStyle(color: Colors.black, fontSize: 15);
+
+    final bool isSelect = widget.qrDesignType == changeQrDesignType;
     final Color color =
         qrDesignService.typeColor(changeQrDesignType) ?? Colors.black;
-    final bool isSelect = widget.qrDesignType == changeQrDesignType;
     final bool isDots = changeQrDesignType == QrDesignType.dots;
     final bool isBackground = changeQrDesignType == QrDesignType.background;
     const double borderRadiusSize = 18;
+    final Size size = Size(deviceStore.size.width / 3, !isSelect ? 56 : 67);
+    final String text = changeQrDesignType.name.capitalize;
     return TextButton(
       key: ValueKey(changeQrDesignType.title),
       onPressed: () => Future.microtask(
@@ -113,7 +119,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
       style: TextButton.styleFrom(
         foregroundColor: color,
         backgroundColor: color.withOpacity(.72),
-        fixedSize: Size(deviceStore.size.width / 3, !isSelect ? 55 : 64),
+        fixedSize: size,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(isDots ? borderRadiusSize : 0),
@@ -124,10 +130,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
           ),
         ),
       ),
-      child: Text(
-        changeQrDesignType.name.capitalize,
-        style: const TextStyle(color: Colors.black, fontSize: 15),
-      ),
+      child: Text(text, style: textStyle),
     );
   }
 }

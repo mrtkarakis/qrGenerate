@@ -44,6 +44,7 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
               child: Column(
                 children: [
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       switchTypeButton(QrDesignType.dots),
                       switchTypeButton(QrDesignType.eye),
@@ -99,33 +100,34 @@ class _ChangeColorPageState extends State<ChangeColorPage> {
   }
 
   TextButton switchTypeButton(QrDesignType changeQrDesignType) {
-    Color color = qrDesignService.typeColor(changeQrDesignType) ?? Colors.black;
-    color = color == Colors.white ? Colors.grey.shade300 : color;
+    final Color color =
+        qrDesignService.typeColor(changeQrDesignType) ?? Colors.black;
+    final bool isSelect = widget.qrDesignType == changeQrDesignType;
+    final bool isDots = changeQrDesignType == QrDesignType.dots;
+    final bool isBackground = changeQrDesignType == QrDesignType.background;
+    const double borderRadiusSize = 18;
     return TextButton(
-      onPressed: () {
-        setState(() {
-          widget.qrDesignType = changeQrDesignType;
-        });
-      },
+      key: ValueKey(changeQrDesignType.title),
+      onPressed: () => Future.microtask(
+        () => setState(() => widget.qrDesignType = changeQrDesignType),
+      ),
       style: TextButton.styleFrom(
-          foregroundColor: color,
-          backgroundColor: color.withOpacity(.6),
-          minimumSize: Size(deviceStore.size.width / 3, 55),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(
-                changeQrDesignType == QrDesignType.dots ? 18 : 0),
-            topRight: Radius.circular(
-                changeQrDesignType == QrDesignType.background ? 18 : 0),
-          ))),
+        foregroundColor: color,
+        backgroundColor: color.withOpacity(.72),
+        fixedSize: Size(deviceStore.size.width / 3, !isSelect ? 55 : 64),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(isDots ? borderRadiusSize : 0),
+            topRight: Radius.circular(isBackground ? borderRadiusSize : 0),
+            bottomLeft: Radius.circular(!isDots ? borderRadiusSize / 2 : 0),
+            bottomRight:
+                Radius.circular(!isBackground ? borderRadiusSize / 2 : 0),
+          ),
+        ),
+      ),
       child: Text(
         changeQrDesignType.name.capitalize(),
-        style: TextStyle(
-          color: changeQrDesignType == widget.qrDesignType
-              ? Colors.black
-              : Colors.black54,
-          fontSize: 15,
-        ),
+        style: const TextStyle(color: Colors.black, fontSize: 15),
       ),
     );
   }

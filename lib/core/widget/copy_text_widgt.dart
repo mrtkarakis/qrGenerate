@@ -13,7 +13,7 @@ class CopyTextWidget extends StatelessWidget {
       onPressed: () async => await clipboardService.hasClipboardData()
           ? qrStore
               .setQrData(await clipboardService.getCopyText() ?? qrStore.data)
-          : null,
+          : toastMessageService.toastMessage("There is no data to copy"),
       child: const Text(AppTexts.useCopiedText),
     );
   }

@@ -81,7 +81,7 @@ class MainViewQr extends StatelessWidget {
               onPressed: () {
                 String data = qrStore.data;
                 clipboardService.copyText(data);
-                toastMessageService.toastMessage("Copy Data");
+                toastMessageService.toastMessage("Data copied");
               },
             ),
             const Spacer(),

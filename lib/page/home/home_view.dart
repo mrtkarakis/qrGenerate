@@ -25,13 +25,15 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
+              // ignore: prefer_const_literals_to_create_immutables
+              children: [
                 paddingWidget,
+                // ignore: prefer_const_constructors
                 MainViewQr(),
                 paddingWidget,
-                CopyTextWidget(),
+                const CopyTextWidget(),
                 paddingWidget,
-                QrFormField(),
+                const QrFormField(),
                 paddingWidget,
                 // QrData(),
               ],

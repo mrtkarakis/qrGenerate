@@ -124,6 +124,17 @@ mixin _$QrStore on _QrStoreBase, Store {
       ActionController(name: '_QrStoreBase', context: context);
 
   @override
+  String setQrData(String? text) {
+    final _$actionInfo = _$_QrStoreBaseActionController.startAction(
+        name: '_QrStoreBase.setQrData');
+    try {
+      return super.setQrData(text);
+    } finally {
+      _$_QrStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   Color setBackgroundColor(Color color) {
     final _$actionInfo = _$_QrStoreBaseActionController.startAction(
         name: '_QrStoreBase.setBackgroundColor');
